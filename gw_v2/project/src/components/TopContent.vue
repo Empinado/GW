@@ -36,6 +36,11 @@
           {{ item.text }}
         </li>
       </ul>
+      <div class="main__buttons">
+        <button class="main__button" v-for="button in topButtons" :key="button">
+          {{ button.title }}
+        </button>
+      </div>
     </div>
   </main>
 </template>
@@ -45,7 +50,7 @@ import { mapState } from "vuex";
 export default {
   name: "TopContent",
   computed: {
-    ...mapState(["topBanner", "topList"]),
+    ...mapState(["topBanner", "topList", "topButtons"]),
   },
 };
 </script>
@@ -75,4 +80,28 @@ export default {
         display: flex
         align-items: center
         gap: 8px
+    &__buttons
+        display: flex
+        gap: 16px
+        justify-content: space-between
+        padding-left: 35px
+        padding-top: 50px
+
+    &__button
+        display: flex
+        align-items: center
+        background-color: #3586ff
+        height: 75px
+        border-radius: 20px
+        padding: 16px
+        border: none
+        font-family: "Oswald", sans-serif
+        font-size: 24px
+        line-height: 125%
+        color: #fff
+        transition: 0.3s
+    &__button:hover
+        background-color: black
+    &__button:active
+        background-color: red
 </style>

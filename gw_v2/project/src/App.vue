@@ -2,6 +2,7 @@
   <div>
     <HeaderComp />
     <TopContent />
+    <TrainerBanner />
     <FooterComp />
   </div>
 </template>
@@ -12,6 +13,7 @@ import "@/assets/styles/variables.sass";
 import HeaderComp from "./components/HeaderComp.vue";
 import FooterComp from "./components/FooterComp.vue";
 import TopContent from "./components/TopContent.vue";
+import TrainerBanner from "./components/TrainerBanner.vue";
 
 export default {
   name: "App",
@@ -19,6 +21,7 @@ export default {
     HeaderComp,
     FooterComp,
     TopContent,
+    TrainerBanner,
   },
 };
 </script>
