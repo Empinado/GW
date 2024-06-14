@@ -1,9 +1,19 @@
 <template>
   <div class="Exercises center">
     <div class="Exercises__container">
+      <div class="Exercises__filter">
+        <button
+          class="Exercises__filter_btn"
+          v-for="item in Filters"
+          :key="item"
+          @click="FILTER__ARR(item)"
+        >
+          {{ item }}
+        </button>
+      </div>
       <div
         class="Exercises__item"
-        v-for="exercise in Exercises"
+        v-for="exercise in FilterExercises"
         :key="exercise.id"
       >
         <img
@@ -45,10 +55,10 @@ export default {
   name: "ExercisesComp",
 
   computed: {
-    ...mapState(["Exercises"]),
+    ...mapState(["Exercises", "Filters", "FilterExercises"]),
   },
   methods: {
-    ...mapMutations(["ADD__EXERCISE"]),
+    ...mapMutations(["ADD__EXERCISE", "FILTER__ARR"]),
   },
 };
 </script>
@@ -64,8 +74,24 @@ a:active
 
 .Exercises
     display: flex
-    padding-top: 64px
     padding-bottom: 96px
+    &__filter
+      background-color: #3586ff
+      z-index: 2
+      position: sticky
+      top: 150px
+      padding: 8px
+      display: flex
+      flex-wrap: wrap
+      gap: 8px
+      justify-content: center
+      &_btn
+        border-radius: 20px
+        background-color: black
+        border: none
+        width: 100px
+        height: 50px
+        color: white
     &__container
         display: flex
         flex-direction: column

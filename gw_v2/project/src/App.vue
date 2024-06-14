@@ -1,11 +1,10 @@
 <template>
   <div>
     <HeaderComp />
-    <!-- <TopContent />
-    <TrainerBanner /> -->
+    <!-- <TopContent /> -->
+    <!-- <TrainerBanner /> -->
     <ExercisesComp />
     <!-- <FooterComp /> -->
-    <CartComp />
   </div>
 </template>
 <script>
@@ -17,13 +16,11 @@ import HeaderComp from "./components/HeaderComp.vue";
 // import TopContent from "./components/TopContent.vue";
 // import TrainerBanner from "./components/TrainerBanner.vue";
 import ExercisesComp from "./components/ExercisesComp.vue";
-import CartComp from "./components/CartComp.vue";
 
 export default {
   name: "App",
   components: {
     HeaderComp,
-    CartComp,
     // FooterComp,
     // TopContent,
     // TrainerBanner,

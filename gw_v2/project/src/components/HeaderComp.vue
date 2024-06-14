@@ -11,7 +11,6 @@
           viewBox="0 0 512 512"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title>ionicons-v5-m</title>
           <path
             d="M193.69,152.84a16,16,0,0,1,29.64,2.56l36.4,121.36,30-59.92a16,16,0,0,1,28.62,0L345.89,272h96.76A213.08,213.08,0,0,0,464,176.65C463.37,114.54,413.54,64,352.92,64c-48.09,0-80,29.54-96.92,51-16.88-21.49-48.83-51-96.92-51C98.46,64,48.63,114.54,48,176.65A211.13,211.13,0,0,0,56.93,240h93.18Z"
           />
@@ -57,6 +56,9 @@
             fill="black"
           />
         </svg>
+        <div class="cart__counter" v-if="Cart.length !== 0">
+          {{ Cart.length }}
+        </div>
       </div>
       <div class="cart" v-show="isShow">
         <div class="cart__item" v-for="item in Cart" :key="item">
@@ -137,6 +139,9 @@ export default {
 <style lang="sass">
 
 .header
+    position: sticky
+    top: 0
+    z-index: 3
     height: 150px
     background-color: gray
     display: flex
@@ -232,4 +237,17 @@ export default {
         text-align: center
         font-size: 22px
         color: white
+.cart__img
+    position: relative
+.cart__counter
+    display: flex
+    justify-content: center
+    align-items: center
+    position: absolute
+    top: -8px
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    background-color: orange
+    font-size: 18px
 </style>
