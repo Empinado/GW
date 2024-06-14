@@ -32,7 +32,7 @@
           {{ link.title }}
         </li>
       </ul>
-      <div class="cart">
+      <div class="cart__img" @click="open">
         <svg
           width="50px"
           height="50px"
@@ -58,16 +58,79 @@
           />
         </svg>
       </div>
+      <div class="cart" v-show="isShow">
+        <div class="cart__item" v-for="item in Cart" :key="item">
+          <p cart__item_title>{{ item.name }}</p>
+          <button @click="DEL__EXERCISE(item.id)" class="cart__item_btn-del">
+            <svg
+              class="cart__item_btn-svg"
+              width="20px"
+              height="20px"
+              viewBox="0 0 32 32"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+            >
+              <title>cross-square</title>
+              <desc>Created with Sketch Beta.</desc>
+              <defs></defs>
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+                sketch:type="MSPage"
+              >
+                <g
+                  id="Icon-Set-Filled"
+                  sketch:type="MSLayerGroup"
+                  transform="translate(-206.000000, -1037.000000)"
+                  fill="red"
+                >
+                  <path
+                    d="M226.95,1056.54 C227.34,1056.93 227.34,1057.56 226.95,1057.95 C226.559,1058.34 225.926,1058.34 225.536,1057.95 L222,1054.41 L218.464,1057.95 C218.074,1058.34 217.441,1058.34 217.05,1057.95 C216.66,1057.56 216.66,1056.93 217.05,1056.54 L220.586,1053 L217.05,1049.46 C216.66,1049.07 216.66,1048.44 217.05,1048.05 C217.441,1047.66 218.074,1047.66 218.464,1048.05 L222,1051.59 L225.536,1048.05 C225.926,1047.66 226.559,1047.66 226.95,1048.05 C227.34,1048.44 227.34,1049.07 226.95,1049.46 L223.414,1053 L226.95,1056.54 L226.95,1056.54 Z M234,1037 L210,1037 C207.791,1037 206,1038.79 206,1041 L206,1065 C206,1067.21 207.791,1069 210,1069 L234,1069 C236.209,1069 238,1067.21 238,1065 L238,1041 C238,1038.79 236.209,1037 234,1037 L234,1037 Z"
+                    id="cross-square"
+                    sketch:type="MSShapeGroup"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <button
+          class="cart__item_btn-clr"
+          v-if="Cart.length !== 0"
+          @click="CLEAR__CART"
+        >
+          Очистить
+        </button>
+        <p class="cart__text" v-if="Cart.length == 0">
+          Добавьте упражнения в список
+        </p>
+      </div>
     </div>
   </header>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
   name: "HeaderComp",
+  data() {
+    return {
+      isShow: false,
+    };
+  },
 
   computed: {
-    ...mapState(["links"]),
+    ...mapState(["links", "Cart"]),
+  },
+  methods: {
+    ...mapMutations(["DEL__EXERCISE", "CLEAR__CART"]),
+    open() {
+      this.isShow = !this.isShow;
+    },
   },
 };
 </script>
@@ -81,7 +144,6 @@ export default {
     align-items: center
     box-sizing: border-box
     background-image: url("@/assets/headerImg.jpg")
-
     &__left
       display: flex
       flex-direction: column
@@ -89,7 +151,6 @@ export default {
       background-color: #fff
       border-radius: 10px
       padding: 8px
-
     &__logo_text
       font-family: "Oswald", sans-serif
       font-size: 28px
@@ -104,9 +165,10 @@ export default {
       line-height: 125%
       color: black
     &__link
-
       transition: 0.4s
     &__right
+      position: relative
+      z-index: 2
       background-color: #fff
       border-radius: 10px
       padding: 8px
@@ -124,4 +186,50 @@ export default {
     color: #3586ff
 .header__link:active
     color: red
+.cart
+    position: absolute
+    display: flex
+    flex-direction: column
+    z-index: 1
+    width: 262px
+    background-color: #3586ff
+    top: 70px
+    border-radius: 10px
+    left: 0
+    padding: 8px
+    &__item
+      display: flex
+      align-items: center
+      justify-content: space-between
+      border: 1px solid #3586ff
+      border-radius: 10px
+      padding: 5px
+      background-color: white
+      font-size: 14px
+      &_btn-del
+        border: none
+      &_btn-svg path
+        transition: 0.4s
+      &_btn-svg path:hover
+        fill: #3586ff
+      &_btn-svg path:active
+        fill: black
+      &_btn-clr
+        margin-top: 8px
+        border: none
+        border-radius: 10px
+        background-color: black
+        color: white
+        font-family: "Oswald", sans-serif
+        font-size: 12px
+        transition: 0.4s
+      &_btn-clr:hover
+        background-color: red
+      &_btn-clr:active
+        background-color: #3586ff
+      &__text
+        display: flex
+        text-align: center
+        font-size: 22px
+        color: white
 </style>

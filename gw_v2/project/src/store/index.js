@@ -51,9 +51,73 @@ export default createStore({
       text3:
         "Вместе с нашей командой вы сможете преодолеть любые трудности и достичь новых вершин в своем фитнес-путешествии",
     },
+    Exercises: [
+      {
+        id: 1,
+        name: "Жим штанги лежа",
+        desc: "Это упражнение отлично развивает грудные мышцы, дельты и трицепсы, помогая укрепить верхнюю часть тела и улучшить общую силу.",
+        tegs: ["Грудь", "Трицепс", "Дельты"],
+        img: "Ex1.jpg",
+        url: "https://www.youtube.com/watch?v=haAmJyTFMKE&ab_channel=SMARTTRAININGChannel",
+      },
+      {
+        id: 2,
+        name: "Жим штанги на наклонной скамье",
+        desc: "Позволяет сосредоточиться на верхней части груди, развивая и придавая форму этой области, что способствует созданию более сбалансированного развития грудных мышц.",
+        tegs: ["Грудь", "Трицепс", "Дельты"],
+        img: "Ex2.jpg",
+        url: "https://www.youtube.com/watch?v=5OlJ6WFLWQM&ab_channel=SMARTTRAININGChannel",
+      },
+      {
+        id: 3,
+        name: "Присед со штангой",
+        desc: "Отличное упражнение для развития нижней части тела, включая квадрицепсы, ягодицы и стабилизирующие мышцы кора. Помогает улучшить силу и выносливость ног.",
+        tegs: ["Квадрицепс", "Ягодицы"],
+        img: "Ex3.jpg",
+        url: "https://www.youtube.com/watch?v=EgGx7tp7mTs&ab_channel=SMARTTRAININGChannel",
+      },
+      {
+        id: 4,
+        name: "Становая тяга",
+        desc: "Развивает почти все основные группы мышц, включая спину, ягодицы, бедра и предплечья. Укрепляет спину, улучшает осанку и помогает в повседневных движениях.",
+        tegs: ["Спина", "Ягодицы", "Бедра"],
+        img: "Ex4.jpg",
+        url: "https://www.youtube.com/watch?v=80BlWHAxPag&ab_channel=SMARTTRAININGChannel",
+      },
+      {
+        id: 5,
+        name: "Отжимания на брусьях",
+        desc: "Прекрасное упражнение для развития грудных мышц, дельт и трицепсов, а также для укрепления стабилизаторов плечевого пояса.",
+        tegs: ["Грудь", "Трицепс", "Дельты"],
+        img: "Ex5.jpg",
+        url: "https://www.youtube.com/watch?v=ORE34_2m62A&ab_channel=SMARTTRAININGChannel",
+      },
+      {
+        id: 6,
+        name: "Подъем штанги на бицепс",
+        desc: "Это упражнение направлено на развитие бицепсов и предплечий, помогая улучшить силу и форму рук.",
+        tegs: ["Бицепс", "Предплечья"],
+        img: "Ex6.jpg",
+        url: "https://www.youtube.com/watch?v=WpbyWZjmkpU&ab_channel=FreshLife28",
+      },
+    ],
+    Cart: [],
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    ADD__EXERCISE(state, { exercise }) {
+      state.Cart.push(exercise);
+    },
+    DEL__EXERCISE(state, id) {
+      const index = state.Cart.findIndex((item) => item.id == id);
+      if (index !== -1) {
+        state.Cart.splice(index, 1);
+      }
+    },
+    CLEAR__CART(state) {
+      state.Cart.splice(0, state.Cart.length);
+    },
+  },
   actions: {},
   modules: {},
 });
