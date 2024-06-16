@@ -103,16 +103,16 @@ export default createStore({
     ],
     Cart: [],
     Filters: [
-      "Все",
-      "Грудь",
-      "Дельты",
-      "Трицепс",
-      "Спина",
-      "Квадрицепс",
-      "Ягодицы",
-      "Бедра",
-      "Бицепс",
-      "Предплечья",
+      { id: 1, text: "Все" },
+      { id: 2, text: "Грудь" },
+      { id: 3, text: "Дельты" },
+      { id: 4, text: "Трицепс" },
+      { id: 5, text: "Спина" },
+      { id: 6, text: "Квадрицепс" },
+      { id: 7, text: "Ягодицы" },
+      { id: 8, text: "Бедра" },
+      { id: 9, text: "Бицепс" },
+      { id: 10, text: "Предплечья" },
     ],
     FilterExercises: [
       {
@@ -164,6 +164,13 @@ export default createStore({
         url: "https://www.youtube.com/watch?v=WpbyWZjmkpU&ab_channel=FreshLife28",
       },
     ],
+    TypesList: [
+      { id: 1, name: "SPLIT" },
+      { id: 2, name: "FULL BODY" },
+      { id: 3, name: "PUSH/PULL" },
+    ],
+    activeButton: 1,
+    activeType: 1,
   },
   getters: {},
   mutations: {
@@ -180,13 +187,38 @@ export default createStore({
       state.Cart.splice(0, state.Cart.length);
     },
     FILTER__ARR(state, tag) {
-      if (tag == "Все") {
+      if (tag.text == "Все") {
         state.FilterExercises = state.Exercises;
       } else {
         state.FilterExercises = state.Exercises.filter((exercise) =>
-          exercise.tegs.includes(tag)
+          exercise.tegs.includes(tag.text)
         );
       }
+      this.state.activeButton = tag.id;
+    },
+    COPY__CART(state) {
+      const cartData = state.Cart.map((item) => {
+        return item.name;
+      });
+
+      const dataToCopy = cartData.join("\n");
+
+      navigator.clipboard
+        .writeText(dataToCopy)
+        .then(() => {
+          alert("Данные успешно скопированы в буфер обмена");
+        })
+        .catch((err) => {
+          alert("Ошибка копирования данных: ", err);
+        });
+    },
+    ACTIVE__TYPE(state, type) {
+      state.activeType = type.id;
+    },
+    ANALIZE__ARR(state) {
+      state.Cart.forEach((el) => {
+        console.log(el.tegs);
+      });
     },
   },
   actions: {},

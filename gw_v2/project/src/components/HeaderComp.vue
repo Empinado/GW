@@ -61,6 +61,19 @@
         </div>
       </div>
       <div class="cart" v-show="isShow">
+        <div class="cart__adviсes" @click="ANALIZE__ARR">1</div>
+        <div class="cart__types" v-if="Cart.length > 0">
+          <button
+            class="cart__types_btn"
+            v-for="type in TypesList"
+            :key="type.id"
+            @click="ACTIVE__TYPE(type)"
+            :class="{ active: type.id === activeType }"
+          >
+            {{ type.name }}
+          </button>
+        </div>
+
         <div class="cart__item" v-for="item in Cart" :key="item">
           <p cart__item_title>{{ item.name }}</p>
           <button @click="DEL__EXERCISE(item.id)" class="cart__item_btn-del">
@@ -101,6 +114,20 @@
             </svg>
           </button>
         </div>
+        <p class="cart__copy" v-if="Cart.length > 0" @click="COPY__CART">
+          COPY<svg
+            fill="#fff"
+            width="18px"
+            height="18px"
+            viewBox="0 0 1920 1920"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1468.183 451.76v1468.184H0V451.76h1468.183ZM1920 0v1468.296h-338.812V338.812H451.704V0H1920ZM338.812 1016.446h790.56V903.509h-790.56v112.937Zm0 225.874h564.686v-112.937H338.812v112.937Zm0 225.988h790.56v-113.05h-790.56v113.05Z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </p>
         <button
           class="cart__item_btn-clr"
           v-if="Cart.length !== 0"
@@ -108,6 +135,7 @@
         >
           Очистить
         </button>
+
         <p class="cart__text" v-if="Cart.length == 0">
           Добавьте упражнения в список
         </p>
@@ -126,10 +154,16 @@ export default {
   },
 
   computed: {
-    ...mapState(["links", "Cart"]),
+    ...mapState(["links", "Cart", "TypesList", "activeType"]),
   },
   methods: {
-    ...mapMutations(["DEL__EXERCISE", "CLEAR__CART"]),
+    ...mapMutations([
+      "DEL__EXERCISE",
+      "CLEAR__CART",
+      "COPY__CART",
+      "ACTIVE__TYPE",
+      "ANALIZE__ARR",
+    ]),
     open() {
       this.isShow = !this.isShow;
     },
@@ -250,4 +284,20 @@ export default {
     border-radius: 50%
     background-color: orange
     font-size: 18px
+.cart__copy
+    text-align: center
+    font-size: 18px
+    color: white
+.cart__types
+    display: flex
+    justify-content: center
+    padding-bottom: 8px
+    &_btn
+      transition: 0,5s
+      border: none
+      background-color: #fff
+      padding: 8px
+.active
+  background-color: red
+  color: white
 </style>

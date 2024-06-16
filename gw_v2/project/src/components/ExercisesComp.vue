@@ -1,16 +1,17 @@
 <template>
   <div class="Exercises center">
+    <div class="Exercises__filter">
+      <button
+        class="Exercises__filter_btn"
+        v-for="item in Filters"
+        :key="item.id"
+        @click="FILTER__ARR(item)"
+        :class="{ active: item.id === activeButton }"
+      >
+        {{ item.text }}
+      </button>
+    </div>
     <div class="Exercises__container">
-      <div class="Exercises__filter">
-        <button
-          class="Exercises__filter_btn"
-          v-for="item in Filters"
-          :key="item"
-          @click="FILTER__ARR(item)"
-        >
-          {{ item }}
-        </button>
-      </div>
       <div
         class="Exercises__item"
         v-for="exercise in FilterExercises"
@@ -53,9 +54,11 @@
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "ExercisesComp",
-
+  data() {
+    return {};
+  },
   computed: {
-    ...mapState(["Exercises", "Filters", "FilterExercises"]),
+    ...mapState(["Exercises", "Filters", "FilterExercises", "activeButton"]),
   },
   methods: {
     ...mapMutations(["ADD__EXERCISE", "FILTER__ARR"]),
@@ -71,13 +74,12 @@ a:hover
     color: black
 a:active
     color: red
-
 .Exercises
-    display: flex
     padding-bottom: 96px
     &__filter
       background-color: #3586ff
       z-index: 2
+      width: 100%
       position: sticky
       top: 150px
       padding: 8px
@@ -86,6 +88,7 @@ a:active
       gap: 8px
       justify-content: center
       &_btn
+        transition: 0.4s
         border-radius: 20px
         background-color: black
         border: none
@@ -96,6 +99,7 @@ a:active
         display: flex
         flex-direction: column
         gap: 50px
+        margin-top: 50px
     &__item
         position: relative
         display: flex
@@ -107,7 +111,6 @@ a:active
           border-right: 2px solid #3586ff
           max-width: 350px
           border-radius: 60px 0px 0px 60px
-          opacity: 1
         &__block
             display: flex
             flex-direction: column
@@ -170,4 +173,6 @@ a:active
         opacity: 0.5
     &__btn:active
         background-color: red
+.active
+  background-color: red
 </style>
