@@ -9,8 +9,12 @@
         :key="banner"
       />
     </section>
-    <h2 class="banner__subtitle">{{ TrainerBannerText.subtitle }}</h2>
+
     <div class="banner__bottom">
+      <h2 class="banner__subtitle">{{ TrainerBannerText.subtitle }}</h2>
+      <div class="banner__img">
+        <img src="@/assets/TrainerBanner.jpg" alt="banner__img" />
+      </div>
       <div class="banner__text-container">
         <router-link to="/GuidePage">
           <p class="banner__text">{{ TrainerBannerText.text1 }}</p>
@@ -21,9 +25,6 @@
         <router-link to="/TrainerPage">
           <p class="banner__text">{{ TrainerBannerText.text3 }}</p>
         </router-link>
-      </div>
-      <div class="banner__img">
-        <img src="@/assets/TrainerBanner.jpg" alt="banner__img" />
       </div>
     </div>
   </div>
@@ -39,40 +40,65 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
+
 .banner
 
+  &__container
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      padding-bottom: 60px
+      &_img
+          width: 350px
+          border-radius: 50%
+          border: 1px solid #3586ff
+          transition: 0.5s
+      &_img:hover
+          transform: translateY(-10px)
+          opacity: 0.8
+          -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5)
+          -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5)
+          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5)
+  &__bottom
+      display: flex
+      align-items: center
+      flex-direction: column
+      justify-content: space-between
+  &__subtitle
+      text-align: center
+      padding-bottom: 64px
+  &__text-container
+      display: flex
+      flex-direction: column
+      gap: 16px
+      text-align: center
+      width: 50%
+      padding: 16px
+      border-radius: 40px
+      border: 1px solid #3586ff
+  &__text
+      color: #3586ff
+  &__img
+    width: 400px
+
+@media (max-width: 1024px)
+  .banner
+    display: flex
+    flex-direction: column
     &__container
-        display: flex
-        flex-direction: row
-        justify-content: space-between
-        padding-bottom: 60px
-        &_img
-            width: 350px
-            border-radius: 50%
-            border: 1px solid #3586ff
-            transition: 0.5s
-        &_img:hover
-            transform: translateY(-10px)
-            opacity: 0.8
-            -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5)
-            -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5)
-            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5)
-    &__bottom
-        display: flex
-        flex-direction: row
-        justify-content: space-between
+      display: none
     &__subtitle
-        text-align: center
-        padding-bottom: 64px
-    &__text-container
-        display: flex
-        flex-direction: column
-        gap: 16px
-        text-align: center
-        width: 50%
-        padding: 16px
-        border-radius: 40px
-        border: 1px solid #3586ff
+      font-size: 36px
+      padding-bottom: 36px
+    &__img
+      display: none
+    &__bottom
+      align-items: center
+      height: 600px
+      flex-direction: column
     &__text
-        color: #3586ff
+      font-size: 16px
+@media (max-width: 767px)
+  .banner__text-container
+    width: 100%
 </style>

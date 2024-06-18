@@ -103,6 +103,7 @@ a:active
     &__item
         position: relative
         display: flex
+        justify-content: space-between
         height: 200px
         border: 2px solid #3586ff
         border-radius: 60px 0px 0px 60px
@@ -113,11 +114,13 @@ a:active
           border-radius: 60px 0px 0px 60px
         &__block
             display: flex
+            width: 100%
             flex-direction: column
             justify-content: space-between
             &_title
               display: flex
               padding-left: 24px
+              width: 100%
               display: flex
               align-items: center
               text-align: left
@@ -127,18 +130,20 @@ a:active
 
             &_text
                 display: flex
+                width: 100%
                 padding-top: 8px
                 padding-left: 24px
                 font-size: 18px
 
             &_teg
-                display: flex
+              display: flex
+              height: 100%
             &_ul
                 display: flex
                 flex-direction: column
                 align-items: center
                 justify-content: center
-                gap: 30px
+                gap: 15px
                 width: 120px
                 border-left: 2px solid #3586ff
             &_li
@@ -175,4 +180,44 @@ a:active
         background-color: red
 .active
   background-color: red
+
+@media (max-width: 1024px)
+  .Exercises
+    &__btn
+      left: 13%
+    &__item
+      &__block_text
+        overflow: scroll
+      &_img
+        width: 33%
+      &__block_li
+        font-size: 18px
+
+@media (max-width: 767px)
+  .Exercises
+    &__filter
+      top: 200px
+    &__btn
+      top: 60px
+      left: 90px
+    &__item
+      flex-direction: column
+      justify-content: center
+      height: 100%
+      border-radius: 60px 60px 0px 0px
+      &_img
+        width: 100%
+        border-radius: 60px 60px 0px 0px
+      &__block_title
+        justify-content: center
+        padding-left: 0
+        text-align: center
+      &__block_text
+        padding: 8px
+      &__block_teg
+        justify-content: center
+        border-top: 2px solid #3586ff
+      &__block_ul
+        flex-direction: row
+        border-left: 0
 </style>

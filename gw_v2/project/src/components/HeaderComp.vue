@@ -66,7 +66,6 @@
         </div>
       </div>
       <div class="cart" v-show="isShow">
-        <div class="cart__adviсes" @click="ANALIZE__ARR">1</div>
         <div class="cart__types" v-if="Cart.length > 0">
           <button
             class="cart__types_btn"
@@ -92,8 +91,6 @@
               xmlns:xlink="http://www.w3.org/1999/xlink"
               xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
             >
-              <title>cross-square</title>
-              <desc>Created with Sketch Beta.</desc>
               <defs></defs>
               <g
                 id="Page-1"
@@ -167,7 +164,6 @@ export default {
       "CLEAR__CART",
       "COPY__CART",
       "ACTIVE__TYPE",
-      "ANALIZE__ARR",
     ]),
     open() {
       this.isShow = !this.isShow;
@@ -306,4 +302,14 @@ export default {
 .active
   background-color: red
   color: white
+@media (max-width: 767px)
+  .cart
+    left:44px
+    top: 71px
+  .header
+    flex-direction: column
+    padding: 8px
+    height: 200px
+    &__logo_text
+      display: none
 </style>

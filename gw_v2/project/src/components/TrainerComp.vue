@@ -78,4 +78,22 @@ export default {
     &:active
       background-color: white
       color: black
+
+@media (max-width: 1024px)
+  .Trainer
+    &__img
+      display: none
+@media (max-width: 767px)
+  .Trainer
+    justify-content: center
+    &__container
+      display: flex
+      width: 100%
+    &__container_subtitle
+      font-size: 22px
+    &__container_text
+      font-size: 18px
+  .form
+    flex-direction: column
+    align-items: center
 </style>

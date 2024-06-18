@@ -33,7 +33,7 @@
         />
       </section>
       <section class="Guide__item_right">
-        <h2 Guide__subtitle>{{ guide.title }}</h2>
+        <h2 class="Guide__subtitle">{{ guide.title }}</h2>
         <p class="Guide__text">{{ guide.text }}</p>
       </section>
     </div>
@@ -114,4 +114,33 @@ export default {
     position: relative
 .reverse
     flex-direction: row-reverse
+@media (max-width: 1024px)
+  .Guide
+    padding-top: 0
+    gap:20px
+    &__img
+      scale: 0.7
+    &__title
+      left: 90px
+      scale: 0.7
+    &__subtitle
+      font-size: 22px
+    &__text
+      font-size: 18px
+@media (max-width: 767px)
+  .Guide
+    &__item_left
+      display: none
+    &__img
+      display: none
+    &__title
+      padding-top: 40px
+      display: block
+      position: unset
+      color: black
+    &__subtitle
+      font-size: 18px
+    &__text
+      font-size: 16px
+      margin-top: 8px
 </style>

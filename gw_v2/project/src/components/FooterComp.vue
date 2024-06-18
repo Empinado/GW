@@ -1,31 +1,33 @@
 <template>
-  <footer class="footer center">
-    <div class="waves">
-      <div class="wave" :id="wave.id" v-for="wave in waves" :key="wave"></div>
-    </div>
-    <ul class="social-icon">
-      <li class="social-icon__item">
-        <a
-          class="social-icon__link"
-          :href="icon.url"
-          v-for="icon in icons"
-          :key="icon"
-        >
-          <img
-            class="social-icon__img"
-            :src="require(`@/assets/svg/${icon.img}`)"
-            alt="icon.name"
-          />
-        </a>
-      </li>
-    </ul>
-    <ul class="menu">
-      <li class="menu__item" v-for="link in linksFooter" :key="link">
-        <a class="menu__link" :href="link.url">{{ link.title }}</a>
-      </li>
-    </ul>
-    <p>&copy;2024 FIT BRO | All Rights Reserved</p>
-  </footer>
+  <div class="fix">
+    <footer class="footer center">
+      <div class="waves">
+        <div class="wave" :id="wave.id" v-for="wave in waves" :key="wave"></div>
+      </div>
+      <ul class="social-icon">
+        <li class="social-icon__item">
+          <a
+            class="social-icon__link"
+            :href="icon.url"
+            v-for="icon in icons"
+            :key="icon"
+          >
+            <img
+              class="social-icon__img"
+              :src="require(`@/assets/svg/${icon.img}`)"
+              alt="icon.name"
+            />
+          </a>
+        </li>
+      </ul>
+      <ul class="menu">
+        <li class="menu__item" v-for="link in linksFooter" :key="link">
+          <a class="menu__link" :href="link.url">{{ link.title }}</a>
+        </li>
+      </ul>
+      <p>&copy;2024 FIT BRO | All Rights Reserved</p>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -43,6 +45,11 @@ export default {
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap")
 
+.fix
+  position: absolute
+  bottom: 0
+  height: 100px
+  width: 100%
 .footer
   position: relative
   width: 100%
@@ -54,9 +61,6 @@ export default {
   align-items: center
   flex-direction: column
   margin-top: 150px
-
-
-
 .social-icon,
 .menu
   position: relative

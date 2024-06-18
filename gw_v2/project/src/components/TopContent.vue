@@ -108,4 +108,26 @@ export default {
       font-size: 24px
       line-height: 125%
       color: #fff
+
+@media (max-width: 1024px)
+  .main
+    display: flex
+    align-items: center
+    flex-direction: column
+    font-size: 20px
+    margin-bottom: 64px
+    &__buttons
+    &__button_link
+      font-size: 14px
+@media (max-width: 767px)
+  .main
+    font-size: 16px
+    &__buttons
+      display: flex
+      flex-direction: column
+      padding-left: 0
+    &__button
+      justify-content: center
+    &__right
+      width: 100%
 </style>
