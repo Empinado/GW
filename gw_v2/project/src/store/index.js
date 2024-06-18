@@ -324,17 +324,23 @@ export default createStore({
   },
   getters: {},
   mutations: {
+    SET_CART: (state, cartData) => {
+      state.Cart = cartData;
+    },
     ADD__EXERCISE(state, { exercise }) {
       state.Cart.push(exercise);
+      localStorage.setItem("Cart", JSON.stringify(state.Cart));
     },
-    DEL__EXERCISE(state, id) {
-      const index = state.Cart.findIndex((item) => item.id == id);
+    DEL__EXERCISE: (state, id) => {
+      const index = state.Cart.findIndex((item) => item.id === id);
       if (index !== -1) {
         state.Cart.splice(index, 1);
+        localStorage.setItem("Cart", JSON.stringify(state.Cart));
       }
     },
     CLEAR__CART(state) {
       state.Cart.splice(0, state.Cart.length);
+      localStorage.setItem("Cart", JSON.stringify(state.Cart));
     },
     FILTER__ARR(state, tag) {
       if (tag.text == "Все") {
@@ -366,6 +372,11 @@ export default createStore({
       state.activeType = type.id;
     },
   },
-  actions: {},
+  actions: {
+    LOAD_CART: ({ commit }) => {
+      const cartData = JSON.parse(localStorage.getItem("Cart")) || [];
+      commit("SET_CART", cartData);
+    },
+  },
   modules: {},
 });

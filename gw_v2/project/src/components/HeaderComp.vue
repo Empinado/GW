@@ -146,9 +146,10 @@
   </header>
 </template>
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapState, mapActions } from "vuex";
 export default {
   name: "HeaderComp",
+
   data() {
     return {
       isShow: false,
@@ -157,6 +158,7 @@ export default {
 
   computed: {
     ...mapState(["links", "Cart", "TypesList", "activeType"]),
+    ...mapActions(["LOAD_CART"]),
   },
   methods: {
     ...mapMutations([
@@ -164,10 +166,14 @@ export default {
       "CLEAR__CART",
       "COPY__CART",
       "ACTIVE__TYPE",
+      "SET_CART",
     ]),
     open() {
       this.isShow = !this.isShow;
     },
+  },
+  created() {
+    this.$store.dispatch("LOAD_CART");
   },
 };
 </script>
