@@ -32,7 +32,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "FotterComp",
+  name: "FooterComp",
 
   computed: {
     ...mapState(["waves", "linksFooter", "icons"]),
@@ -53,7 +53,7 @@ export default {
   justify-content: center
   align-items: center
   flex-direction: column
-  margin-top: 96px
+  margin-top: 150px
 
 
 

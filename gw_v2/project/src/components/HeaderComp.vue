@@ -2,7 +2,7 @@
   <header class="header center">
     <div class="header__left">
       <p class="header__logo_text">FIT BRO</p>
-      <a class="header__logo" href="./">
+      <router-link class="header__logo" to="./">
         <svg
           class="logo"
           fill="#000000"
@@ -23,13 +23,18 @@
           <path
             d="M48,240a16,16,0,0,0,0,32H69.35a225.22,225.22,0,0,1-12.42-32Z"
           /></svg
-      ></a>
+      ></router-link>
     </div>
     <div class="header__right">
       <ul class="header__links">
-        <li class="header__link" v-for="link in links" :key="link">
+        <router-link
+          :to="link.url"
+          class="header__link"
+          v-for="link in links"
+          :key="link.id"
+        >
           {{ link.title }}
-        </li>
+        </router-link>
       </ul>
       <div class="cart__img" @click="open">
         <svg
@@ -199,11 +204,12 @@ export default {
       display: flex
       flex-direction: row
       gap: 16px
+
+    &__link
       font-family: "Oswald", sans-serif
       font-size: 28px
       line-height: 125%
       color: black
-    &__link
       transition: 0.4s
     &__right
       position: relative

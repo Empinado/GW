@@ -1,6 +1,6 @@
 <template>
   <div class="banner center">
-    <div class="banner__container">
+    <section class="banner__container">
       <img
         class="banner__container_img"
         :src="require(`@/assets/${banner.img}`)"
@@ -8,16 +8,22 @@
         v-for="banner in banners"
         :key="banner"
       />
-    </div>
+    </section>
     <h2 class="banner__subtitle">{{ TrainerBannerText.subtitle }}</h2>
     <div class="banner__bottom">
       <div class="banner__text-container">
-        <p class="banner__text">{{ TrainerBannerText.text1 }}</p>
-        <p class="banner__text">{{ TrainerBannerText.text2 }}</p>
-        <p class="banner__text">{{ TrainerBannerText.text3 }}</p>
+        <router-link to="/GuidePage">
+          <p class="banner__text">{{ TrainerBannerText.text1 }}</p>
+        </router-link>
+        <router-link to="/ConstructorPage">
+          <p class="banner__text">{{ TrainerBannerText.text2 }}</p>
+        </router-link>
+        <router-link to="/TrainerPage">
+          <p class="banner__text">{{ TrainerBannerText.text3 }}</p>
+        </router-link>
       </div>
       <div class="banner__img">
-        <img src="@/assets/TrainerBanner.jpg" alt="" />
+        <img src="@/assets/TrainerBanner.jpg" alt="banner__img" />
       </div>
     </div>
   </div>
@@ -32,7 +38,7 @@ export default {
   },
 };
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 .banner
 
     &__container

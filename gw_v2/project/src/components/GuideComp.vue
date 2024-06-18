@@ -1,13 +1,13 @@
 <template>
   <div class="Guide center">
-    <div class="Giude__title-conteiner rel">
+    <section class="Giude__title-conteiner rel">
       <img
         class="Guide__img"
         :src="require(`@/assets/question.jpg`)"
         alt="Guide__img"
       />
       <h1 class="Guide__title">Что нужно знать?</h1>
-    </div>
+    </section>
 
     <h2 class="Guide__subtitle">
       Системы тренировок в зале: Split, Full Body и Push-Pull
@@ -25,17 +25,17 @@
       :key="guide.id"
       :class="{ reverse: guide.title === 'Full Body' }"
     >
-      <div class="Guide__item_left">
+      <section class="Guide__item_left">
         <img
           class="Guide__text_img"
           :src="require(`@/assets/${guide.url}`)"
           alt="Guide__img"
         />
-      </div>
-      <div class="Guide__item_right">
+      </section>
+      <section class="Guide__item_right">
         <h2 Guide__subtitle>{{ guide.title }}</h2>
         <p class="Guide__text">{{ guide.text }}</p>
-      </div>
+      </section>
     </div>
     <h2 class="Guide__subtitle">Какая система лучше?</h2>
     <p class="Guide__text">

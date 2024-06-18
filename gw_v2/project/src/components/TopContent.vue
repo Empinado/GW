@@ -1,13 +1,13 @@
 <template>
   <main class="main center">
-    <div class="main__left">
+    <section class="main__left">
       <img
         class="main__img"
         :src="require(`@/assets/${topBanner.img}`)"
         :alt="topBanner.name"
       />
-    </div>
-    <div class="main__right">
+    </section>
+    <section class="main__right">
       <h1 class="main__title">{{ topBanner.title }}</h1>
       <p class="main__text">{{ topBanner.text }}</p>
       <ul class="main__ul">
@@ -38,10 +38,12 @@
       </ul>
       <div class="main__buttons">
         <button class="main__button" v-for="button in topButtons" :key="button">
-          {{ button.title }}
+          <router-link class="main__button_link" :to="button.url">{{
+            button.title
+          }}</router-link>
         </button>
       </div>
-    </div>
+    </section>
   </main>
 </template>
 <script>
@@ -54,7 +56,7 @@ export default {
   },
 };
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 .main
     display: flex
     flex-direction: row
@@ -95,13 +97,15 @@ export default {
         border-radius: 20px
         padding: 16px
         border: none
-        font-family: "Oswald", sans-serif
-        font-size: 24px
-        line-height: 125%
-        color: #fff
+
         transition: 0.3s
     &__button:hover
         background-color: black
     &__button:active
         background-color: red
+    &__button_link
+      font-family: "Oswald", sans-serif
+      font-size: 24px
+      line-height: 125%
+      color: #fff
 </style>

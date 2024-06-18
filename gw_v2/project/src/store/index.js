@@ -9,9 +9,9 @@ export default createStore({
       text: "Это проект, призванный помочь вам составить свою идеальную программу тренировок для зала.",
     },
     topButtons: [
-      { title: "Что нужно знать?" },
-      { title: "Помощь профи" },
-      { title: "Что нужно знать?" },
+      { title: "Что нужно знать", url: "/GuidePage" },
+      { title: "Упражнения", url: "/ConstructorPage" },
+      { title: "Помощь профи", url: "/TrainerPage" },
     ],
     topList: [
       { text: "Виды программ" },
@@ -22,9 +22,9 @@ export default createStore({
       { text: "Полезная информация" },
     ],
     links: [
-      { id: 1, title: "link1" },
-      { id: 2, title: "link2" },
-      { id: 3, title: "link3" },
+      { id: 1, title: "Home", url: "./" },
+      { id: 2, title: "Гайд", url: "./GuidePage" },
+      { id: 3, title: "Упражнения", url: "./ConstructorPage" },
     ],
     waves: [{ id: "wave1" }, { id: "wave2" }, { id: "wave3" }, { id: "wave4" }],
     linksFooter: [
